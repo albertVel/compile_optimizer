@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/compile_optimization/tests_compiler/bin/Debug/netstandard2.0
+/compile_optimization/tests_compiler/obj
+/compile_optimization/compile_optimization/bin/Debug/netcoreapp2.2
+/compile_optimization/compile_optimization/obj
+/compile_optimization/.vs/compile_optimization/v15
+/compile_optimization/compile_optimization.sln.DotSettings.user
