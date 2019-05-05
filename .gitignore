@@ -12,3 +12,8 @@
 /compile_optimization/TestResults/b92cd6c9-32aa-48a7-9529-5f544a81bad8
 /.vs
 /compile_optimization/ConsoleApp1/obj/Release/netcoreapp2.2
+/compile_optimization/.vs/CompileOptimization/v15
+/compile_optimization/CompileOptimization/bin/Debug/netcoreapp2.2
+/compile_optimization/CompileOptimization/obj
+/compile_optimization/CompileOptimization.Tests/bin/Debug/netcoreapp2.2
+/compile_optimization/CompileOptimization.Tests/obj

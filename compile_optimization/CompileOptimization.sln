@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "compile_optimization", "compile_optimization\compile_optimization.csproj", "{620EDB7A-472E-410A-A0C5-4D8725F2FDEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompileOptimization", "CompileOptimization\CompileOptimization.csproj", "{620EDB7A-472E-410A-A0C5-4D8725F2FDEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{BF1A5630-1233-44C0-A811-94AF9BC18E3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompileOptimization.Tests", "CompileOptimization.Tests\CompileOptimization.Tests.csproj", "{BF1A5630-1233-44C0-A811-94AF9BC18E3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1725,16 +1725,6 @@
         "build": {
           "build/netcoreapp1.0/xunit.runner.visualstudio.props": {}
         }
-      },
-      "compile_optimization/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v2.2",
-        "compile": {
-          "bin/placeholder/compile_optimization.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/compile_optimization.dll": {}
-        }
       }
     }
   },
@@ -5934,17 +5924,12 @@
         "xunit.runner.visualstudio.2.4.1.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
-    },
-    "compile_optimization/1.0.0": {
-      "type": "project",
-      "path": "../compile_optimization/compile_optimization.csproj",
-      "msbuildProject": "../compile_optimization/compile_optimization.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "D:\\hashcode_final_round\\compile_optimization\\compile_optimization\\CompileOptimization.csproj",
       "Microsoft.NETCore.App >= 2.2.0",
-      "compile_optimization >= 1.0.0",
       "xunit >= 2.4.1",
       "xunit.runner.console >= 2.4.1",
       "xunit.runner.visualstudio >= 2.4.1"
@@ -5957,9 +5942,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\hashcode_final_round\\compile_optimization\\ConsoleApp1\\ConsoleApp1.csproj",
-      "projectName": "ConsoleApp1",
-      "projectPath": "D:\\hashcode_final_round\\compile_optimization\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectUniqueName": "D:\\hashcode_final_round\\compile_optimization\\ConsoleApp1\\CompileOptimization.Tests.csproj",
+      "projectName": "CompileOptimization.Tests",
+      "projectPath": "D:\\hashcode_final_round\\compile_optimization\\ConsoleApp1\\CompileOptimization.Tests.csproj",
       "packagesPath": "C:\\Users\\velasca3\\.nuget\\packages\\",
       "outputPath": "D:\\hashcode_final_round\\compile_optimization\\ConsoleApp1\\obj\\",
       "projectStyle": "PackageReference",
@@ -5979,8 +5964,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "D:\\hashcode_final_round\\compile_optimization\\compile_optimization\\compile_optimization.csproj": {
-              "projectPath": "D:\\hashcode_final_round\\compile_optimization\\compile_optimization\\compile_optimization.csproj"
+            "D:\\hashcode_final_round\\compile_optimization\\compile_optimization\\CompileOptimization.csproj": {
+              "projectPath": "D:\\hashcode_final_round\\compile_optimization\\compile_optimization\\CompileOptimization.csproj"
             }
           }
         }
@@ -6024,5 +6009,16 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project 'D:\\hashcode_final_round\\compile_optimization\\compile_optimization\\CompileOptimization.csproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "D:\\hashcode_final_round\\compile_optimization\\compile_optimization\\CompileOptimization.csproj",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    }
+  ]
 }

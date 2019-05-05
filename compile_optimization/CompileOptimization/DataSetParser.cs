@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
-namespace compile_optimization
+namespace CompileOptimization
 {
 
     public class DataSetParser
@@ -18,8 +15,8 @@ namespace compile_optimization
                 ProcessHeader(file.ReadLine());
                
               
-                dataSetInfo.compiledFiles=new List<CompiledFile>();
-                for (int i = 0; i < dataSetInfo.numberCompiledFiles; i++)
+                dataSetInfo.CompiledFiles=new List<CompiledFile>();
+                for (int i = 0; i < dataSetInfo.NumberCompiledFiles; i++)
                 {
                     
                     var compiledFileInfo = file.ReadLine();
@@ -27,13 +24,29 @@ namespace compile_optimization
                     ProcessCompiledFile(compiledFileInfo, compiledFileDependencies);
                 }
 
-                for (int j = 0; j < dataSetInfo.numberTargetFiles; j++)
-                {
+                dataSetInfo.TargetFiles = new List<TargetFile>();
 
+                for (int j = 0; j < dataSetInfo.NumberTargetFiles; j++)
+                {
+                    var targetFileInfo = file.ReadLine();
+                    dataSetInfo.TargetFiles.Add(ProcessTargetFile(targetFileInfo));
                 }
 
             }
 
+        }
+
+        private TargetFile ProcessTargetFile(string targetFileInfo)
+        {
+            TargetFile targetFile = new TargetFile();
+
+            var splittedTargetFile = targetFileInfo.Split(' ');
+
+            targetFile.FileName = splittedTargetFile[0];
+            targetFile.Deadline = int.Parse(splittedTargetFile[1]);
+            targetFile.GoalPoints = int.Parse(splittedTargetFile[2]);
+
+            return targetFile;
         }
 
         private void ProcessCompiledFile(string compiledFileInfo, string compiledFileDependencies)
@@ -56,7 +69,7 @@ namespace compile_optimization
             {
                 compiledFile.compiledFileDependencies.Add(splittedCompiledFileDependencies[i+1]);
             }
-            dataSetInfo.compiledFiles.Add(compiledFile);
+            dataSetInfo.CompiledFiles.Add(compiledFile);
 
         }
 
@@ -64,9 +77,9 @@ namespace compile_optimization
         {
             var splittedFirstLine = header.Split(' ');
 
-            dataSetInfo.numberCompiledFiles = int.Parse(splittedFirstLine[0]);
-            dataSetInfo.numberTargetFiles = int.Parse(splittedFirstLine[1]);
-            dataSetInfo.numberAvailableServers = int.Parse(splittedFirstLine[2]);
+            dataSetInfo.NumberCompiledFiles = int.Parse(splittedFirstLine[0]);
+            dataSetInfo.NumberTargetFiles = int.Parse(splittedFirstLine[1]);
+            dataSetInfo.NumberAvailableServers = int.Parse(splittedFirstLine[2]);
         }
     }
 }

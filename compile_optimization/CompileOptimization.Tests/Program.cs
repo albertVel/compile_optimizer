@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace compile_optimization
+namespace CompileOptimization.Tests
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main2(string[] args)
         {
             Console.WriteLine("Hello World!");
         }

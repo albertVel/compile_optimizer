@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\compile_optimization\compile_optimization.csproj" />
+    <ProjectReference Include="..\CompileOptimization\CompileOptimization.csproj" />
   </ItemGroup>
 
 </Project>
