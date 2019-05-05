@@ -1,4 +1,7 @@
-﻿using Xunit;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Net.Sockets;
+using Xunit;
 
 namespace CompileOptimization.Tests
 {
@@ -8,6 +11,21 @@ namespace CompileOptimization.Tests
         public void DummyTest()
         {
             Assert.True(true);
+        }
+
+        [Fact]
+        public void ProcessExampleDataSet()
+        {
+            DataSetParser dataSetParser = new DataSetParser();
+
+            dataSetParser.ReadFile(@"../../../DataSets/a_example.in");
+
+            Optimizer optimizer = new Optimizer();
+
+            optimizer.ProcessDataSet(dataSetParser.dataSetInfo);
+
+            DataWriter dataWriter = new DataWriter();
+
         }
 
         [Fact]
@@ -56,11 +74,42 @@ namespace CompileOptimization.Tests
 
         }
 
-        public class CompiledDistribution
-        {
-            public string FileName { get; set; }
-            public string Server { get; set; }
+      
+    }
 
+    public class Optimizer
+    {
+        public void ProcessDataSet(DataSetInfo dataSetInfo)
+        {
+            var compiledFilesWithoutDependencies = from compiledFiles in dataSetInfo.CompiledFiles
+                where compiledFiles.numberCompiledFileDependencies == 0
+                select compiledFiles;
+
+            var compiledFilesWithDependencies = from compiledFiles in dataSetInfo.CompiledFiles
+                where compiledFiles.numberCompiledFileDependencies > 0
+                select compiledFiles;
+
+            List<CompiledDistribution> compiledDistributions = new List<CompiledDistribution>();
+
+            foreach (var compiledFile in compiledFilesWithoutDependencies)
+            {
+                compiledDistributions.Add(new CompiledDistribution(compiledFile.FileName,0));
+            }
         }
+    }
+
+    public class CompiledDistribution
+    {
+
+
+        public CompiledDistribution(string fileName, int server)
+        {
+            this.FileName = fileName;
+            this.Server = server;
+        }
+
+        public string FileName { get; set; }
+        public int Server { get; set; }
+
     }
 }
