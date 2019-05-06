@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.ComponentModel.DataAnnotations;
+using System.IO;
+using System.Net;
 using System.Net.Sockets;
 using Xunit;
 
@@ -24,7 +25,13 @@ namespace CompileOptimization.Tests
 
             optimizer.ProcessDataSet(dataSetParser.dataSetInfo);
 
-            DataWriter dataWriter = new DataWriter();
+            Assert.True(optimizer.CompiledDistributions.Count>=6);
+
+            DataWriter dataWriter = new DataWriter(optimizer.CompiledDistributions,"a_example.out");
+
+            dataWriter.GenerateSubmission();             
+
+            Assert.True(File.Exists("a_example.out"));
 
         }
 
@@ -51,10 +58,6 @@ namespace CompileOptimization.Tests
             Assert.Equal("c5", lastTargetFile.FileName);
             Assert.Equal(53, lastTargetFile.Deadline);
             Assert.Equal(35, lastTargetFile.GoalPoints);
-
-            //DataWriter dataWriter = new DataWriter();
-            //List<CompiledDistribution> compiledDistributions= new List<CompiledDistribution>();
-            ////dataWriter.GenerateSubmission("a_example.submission", compiledDistributions);
         }
 
         [Fact]
@@ -75,41 +78,5 @@ namespace CompileOptimization.Tests
         }
 
       
-    }
-
-    public class Optimizer
-    {
-        public void ProcessDataSet(DataSetInfo dataSetInfo)
-        {
-            var compiledFilesWithoutDependencies = from compiledFiles in dataSetInfo.CompiledFiles
-                where compiledFiles.numberCompiledFileDependencies == 0
-                select compiledFiles;
-
-            var compiledFilesWithDependencies = from compiledFiles in dataSetInfo.CompiledFiles
-                where compiledFiles.numberCompiledFileDependencies > 0
-                select compiledFiles;
-
-            List<CompiledDistribution> compiledDistributions = new List<CompiledDistribution>();
-
-            foreach (var compiledFile in compiledFilesWithoutDependencies)
-            {
-                compiledDistributions.Add(new CompiledDistribution(compiledFile.FileName,0));
-            }
-        }
-    }
-
-    public class CompiledDistribution
-    {
-
-
-        public CompiledDistribution(string fileName, int server)
-        {
-            this.FileName = fileName;
-            this.Server = server;
-        }
-
-        public string FileName { get; set; }
-        public int Server { get; set; }
-
     }
 }
